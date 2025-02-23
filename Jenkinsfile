@@ -27,5 +27,18 @@ pipeline {
                 archiveArtifacts artifacts: "**/*.war"
             }
         }
+
+         stage('test'){
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Checkstyle analysis'){
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+        }
+
     }
 }
